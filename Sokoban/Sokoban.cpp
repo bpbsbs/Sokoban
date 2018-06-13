@@ -239,7 +239,7 @@ bool Sokoban::isCleared()
 	{
 		for (int x = 0; x < mWidth; ++x)
 		{
-			if (mStates(x, y) == eObjects::SPACE
+			if (mStates(x, y) != eObjects::BOX
 				&& mbGoalFlags(x, y) == true)
 			{
 				return false;
