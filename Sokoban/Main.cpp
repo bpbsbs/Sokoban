@@ -4,12 +4,11 @@ int main(void)
 {
 	Sokoban *sokoban = new Sokoban();
 
-	sokoban->Render();
 	while (sokoban->IsRunning())
 	{
+		sokoban->Render();
 		sokoban->PollInput();
 		sokoban->Update();
-		sokoban->Render();
 	}
 	delete sokoban;
 	sokoban = nullptr;
