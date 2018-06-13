@@ -1,14 +1,10 @@
 #include <iostream>
-#include <conio.h>
 
 #include "Sokoban.h"
 #include "File.h"
-#include "ConsoleAPI.h"
 
 Sokoban::Sokoban()
 {
-	ConsoleAPI::HideCursor();
-
 	const char *filename = "Maze1.txt";
 	char *mazeData = nullptr;
 	int fileSize = 0;
@@ -81,16 +77,8 @@ bool Sokoban::IsRunning() const
 
 void Sokoban::PollInput()
 {
-	std::cout << "w: up, s: down, a: left, d: right";
-	
-	if (_kbhit())
-	{
-		mKey = _getch();
-		if (mKey == -32)
-		{
-			mKey = _getch();
-		}
-	}
+	std::cout << "w: up, s: down, a: left, d: right" << std::endl << "> ";
+	std::cin >> mKey;
 }
 
 void Sokoban::Update()
@@ -158,8 +146,6 @@ void Sokoban::Update()
 
 void Sokoban::Render() const
 {
-	ConsoleAPI::GotoXY(0, 0);
-
 	for (int y = 0; y < mHeight; ++y)
 	{
 		for (int x = 0; x < mWidth; ++x)
